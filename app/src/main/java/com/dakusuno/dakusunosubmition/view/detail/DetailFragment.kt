@@ -26,13 +26,15 @@ class DetailFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.toolbar?.title = "Detail ${arguments?.getString("name")}"
+        val fruit:Fruit? = arguments?.getParcelable("listFruit")
+        Log.d("fruit",fruit.toString())
+        activity?.toolbar?.title = "Detail ${fruit?.name}"
         super.onViewCreated(view, savedInstanceState)
-        detail_look.text = arguments?.getString("look")
-        detail_name.text = arguments?.getString("name")
-        detail_store.text = arguments?.getString("store")
+        detail_look.text = fruit?.look
+        detail_name.text = fruit?.name
+        detail_store.text = fruit?.store
         Glide.with(view)
-            .load(arguments?.getString("img"))
+            .load(fruit?.img)
             .into(detail_img)
     }
 }

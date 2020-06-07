@@ -32,8 +32,7 @@ class MainAdapter(val listFruit: List<Fruit>) : RecyclerView.Adapter<MainAdapter
             .into(holder.imgMain)
         holder.nameMain.text = listFruit[position].name
         holder.itemView.setOnClickListener{
-            val bundle = bundleOf("name" to listFruit[position].name,"img" to listFruit[position].img,"look" to listFruit[position].look, "store" to listFruit[position].store
-            )
+            val bundle = bundleOf( "listFruit" to listFruit[position])
             it.findNavController().navigate(R.id.action_mainFragment_to_detailFragment,bundle)
         }
     }
